@@ -1,5 +1,14 @@
 ALLERGENS = %w[eggs peanuts shellfish strawberries tomatoes chocolate pollen cats]
-def allergies n
-  return [ALLERGENS[Math.log2(n).to_i]]
+BASE = 2
+
+def allergies score
+
+  allergens = []
+  while score > 0
+    pow = Math.log(score, BASE).to_i
+    score -= BASE**pow
+    allergens << ALLERGENS[pow]
+  end
+  return allergens
 end
 
